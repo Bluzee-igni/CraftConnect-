@@ -4,35 +4,37 @@ include "koneksi.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="css 1.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Ke App</title>
 </head>
-<body>
+<body class=login>
 
     <?php
         if(isset($_POST['username'])) {
-            $username = $_POST ['username'];
-            $password = md5($_POST ['password']);
+            $username = $_POST['username'];
+            $password = md5($_POST['password']);
 
-            $query = mysqli_query($koneksi, "SELECT*FROM user where username='$username' and password='$password'");
+            $query = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$username' AND password='$password'");
 
             if (mysqli_num_rows($query) > 0){
                 $data = mysqli_fetch_array($query);
                 $_SESSION['user'] = $data;
-                echo'<script>alert("Selamat datang, '.$data['nama'].'")  
-                    location.href="Index.php"</script>';
-            }else{
 
+                if ($data['role'] == 'admin') {
+                    echo '<script>alert("Selamat datang, Admin '.$data['nama'].'"); location.href="Admin.php";</script>';
+                } else {
+                    echo '<script>alert("Selamat datang, '.$data['nama'].'"); location.href="Index.php";</script>';
+                }
+            } else {
                 echo '<script>alert("Username/password tidak sesuai.");</script>';
-
             }
         }
-
     ?>
 
-    <form method="post">
+    <form method="post" class="login-form">
        <table align="center">
             <tr>
                 <td colspan="2" align="center"></td>

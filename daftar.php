@@ -4,12 +4,13 @@ include "koneksi.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="css 1.css">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Ke App</title>
 </head>
-<body>
+<body class="login">
     <?php
 
         if(isset($_POST['username'])){
@@ -28,8 +29,8 @@ include "koneksi.php";
         }  
 
     ?>
-    <form method="post">
-       <table align="center">
+    <form method="post" class="login-form">
+       <table align="center" >
             <tr>
                 <td colspan="2" align="center"></td>
                 <h3>Pendaftaran User</h3>
