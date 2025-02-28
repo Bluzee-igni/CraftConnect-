@@ -33,7 +33,7 @@ include "koneksi.php";
        <table align="center" >
             <tr>
                 <td colspan="2" align="center"></td>
-                <h3>Pendaftaran User</h3>
+                <h3>Registrasi</h3>
             </tr>
             <tr>
                 <td>Nama</td>
@@ -49,7 +49,7 @@ include "koneksi.php";
             </tr>
             <tr>
                 <td></td>
-                <td><button type="submit">Daftar User</button>
+                <td><button type="submit">Registrasi</button>
                 <a href="login.php">Login</a>
             </td>
             </tr>

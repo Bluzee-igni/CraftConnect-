@@ -1,23 +1,10 @@
 <?php
 include 'koneksi.php';
-session_start();
 
-if (isset($_GET['promote'])) {
-    $userId = $_GET['promote'];
-
-    // Update user role to admin in the database
-    $query = "UPDATE tb_users SET role = 'admin' WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $userId);
-
-    if ($stmt->execute()) {
-        $_SESSION['message'] = "User promoted to admin successfully.";
-    } else {
-        $_SESSION['message'] = "Failed to promote user.";
-    }
-
-    $stmt->close();
-    header("Location: views/admin_table.php");
-    exit();
+if (isset($_GET['id_user'])) {
+    $id_user = intval($_GET['id_user']);
+    $query = "UPDATE user SET role = 'admin' WHERE id_user = $id_user";
+    mysqli_query($koneksi, $query);
+    header('Location: Admin.php');
 }
 ?>

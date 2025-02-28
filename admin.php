@@ -52,24 +52,31 @@ $result = mysqli_query($koneksi, $query);
                         <td><?php echo htmlspecialchars($row['nama']); ?></td>
                         <td><?php echo htmlspecialchars($row['username']); ?></td>
                         <td>
-                            <a href="BanUser.php?id_user=<?php echo intval($row['id_user']); ?>" 
+                            <a href="ban.php?id_user=<?php echo intval($row['id_user']); ?>" 
                                class="btn btn-danger btn-sm" 
-                               onclick="return confirm('Are you sure you want to ban this user?')">
+                               onclick="return confirm('Apakah anda yakin ingin memban user ini?')">
                                 <i class="fa fa-ban"></i>
                             </a>
-                            <a href="PromoteUser.php?id_user=<?php echo intval($row['id_user']); ?>" 
-                               class="btn btn-success btn-sm">
+                            <a href="promote.php?id_user=<?php echo intval($row['id_user']); ?>" 
+                               class="btn btn-success btn-sm"
+                               onclick="return confirm('Apakah anda yakin ingin mempromosikan user ini menjadi admin ?')">
                                 <i class="fa fa-arrow-up"></i>
                             </a>
+                            <?php if ($row['role'] == 'banned') { ?>
+                                <a href="unban.php?id_user=<?php echo intval($row['id_user']); ?>" 
+                                   class="btn btn-warning btn-sm" 
+                                   onclick="return confirm('Apakah anda yakin ingin meng-unban user ini?')">
+                                    <i class="fa fa-unlock"></i>
+                                </a>
+                            <?php } ?>
                         </td>
                     </tr>
                 <?php } ?>  
                 </tbody>
             </table>
-            <a href="logout.php" type="button"  class="btn btn-danger mb-3">
-        <i class="fa fa-minus" aria-hidden="true"></i>
-		Logout ?
-		</a>
+            <a href="logout.php" type="button" class="btn btn-danger mb-3">
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Logout?
+            </a>
         </div>
     </div>
 </body>
