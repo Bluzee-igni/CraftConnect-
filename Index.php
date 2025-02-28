@@ -38,6 +38,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM posting");
 
     <!-- My Style-->
     <link rel="stylesheet" href="css 1.css">
+    
 
 </head>
 
@@ -50,6 +51,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM posting");
         <div class="navbar-nav">
             <a href="#">Home</a>
             <a href="#about">Kerajinan</a>
+            <a href="funfact.php">KYML</a>
             <a href="About.php">Tentang Kami</a>
             <a href="logout.php">Logout</a>
         </div>
@@ -74,17 +76,21 @@ $sql = mysqli_query($koneksi, "SELECT * FROM posting");
 
     <section id="about" class="deskripsi">
         <div class="content">
-            <p>Bedog adalah senjata tradisional dari Jawa yang awalnya digunakan sebagai alat serbaguna dalam kehidupan
-                agraris, seperti menebas rumput atau memotong kayu. Selain itu, bedog juga berfungsi sebagai senjata
-                bela diri bagi petani, terutama di masa penjajahan. Bedog dibuat oleh pandai besi dengan teknik tempa
-                tradisional, menggunakan bilah besi atau baja serta gagang dari kayu atau tanduk. Selain menjadi alat
-                sehari-hari, bedog juga melambangkan keberanian dan kemandirian masyarakat Jawa. Saat ini, bedog lebih
-                sering dianggap sebagai simbol budaya atau koleksi seni, meskipun masih digunakan dalam seni bela diri
-                seperti pencak silat.</p>
-            <a
-                href="https://www.lazada.co.id/products/bedog-panguseupan-panjang-bilahper-bajanya-19-cm-kerajinan-khas-daerah-tasikmalaya-jawa-barat-harga-yang-tertera-untuk-satu-buah-barang-i1841198621-s13937234796.html?from_gmc=1&fl_tag=1">Link Pembelian</a>
+            <div class="deskripsi-item">
+                <img src="Img/gambar_bedog.png" alt="">
+                <div class="deskripsi-text">
+                    <p>Bedog adalah senjata tradisional dari Jawa yang awalnya digunakan sebagai alat serbaguna dalam kehidupan
+                        agraris, seperti menebas rumput atau memotong kayu. Selain itu, bedog juga berfungsi sebagai senjata
+                        bela diri bagi petani, terutama di masa penjajahan. Bedog dibuat oleh pandai besi dengan teknik tempa
+                        tradisional, menggunakan bilah besi atau baja serta gagang dari kayu atau tanduk. Selain menjadi alat
+                        sehari-hari, bedog juga melambangkan keberanian dan kemandirian masyarakat Jawa. Saat ini, bedog lebih
+                        sering dianggap sebagai simbol budaya atau koleksi seni, meskipun masih digunakan dalam seni bela diri
+                        seperti pencak silat.</p>
+                    <a
+                        href="https://www.lazada.co.id/products/bedog-panguseupan-panjang-bilahper-bajanya-19-cm-kerajinan-khas-daerah-tasikmalaya-jawa-barat-harga-yang-tertera-untuk-satu-buah-barang-i1841198621-s13937234796.html?from_gmc=1&fl_tag=1">Link Pembelian</a>
+                </div>
+            </div>
         </div>
-        <img src="Img/gambar_bedog.png" alt="">
     </section>
 
     <section id="about" class="deskripsi">
@@ -111,10 +117,10 @@ $sql = mysqli_query($koneksi, "SELECT * FROM posting");
 
     <!-- Tambah Data Button -->
     <div class="tambah-data">
-        <a href="kelola.php" type="button" class="btn btn-primary mb-3">
+        <button href="kelola.php" type="button" class="btn btn-primary mb-3">
             <i class="fa fa-plus"></i>
             Tambah Data
-        </a>
+        </button>
     </div>
 
     <!-- Footer start -->

@@ -33,9 +33,6 @@ if (isset($_GET['ubah'])) {
     <!-- Font Awesome -->
     <link rel="stylesheet" href="fontawsome/css/font-awesome.min.css">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/kelola.css">
-
     <title>Kelola Produk</title>
 </head>
 <body>
