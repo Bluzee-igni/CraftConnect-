@@ -55,6 +55,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM posting");
             <a href="About.php">Tentang Kami</a>
             <a href="logout.php">Logout</a>
             <a href="kelola.php">+</a>
+            <a href="Admin.php">0</a>
         </div>
 
         <div class="navbar-extra" id="hamburger-menu">
@@ -106,6 +107,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM posting");
                     <p><?php echo htmlspecialchars($result['penjelasan']); ?></p>
                     <a href="<?php echo htmlspecialchars($result['link_pembelian']); ?>">Link Pembelian</a>
                 </div>
+                <a href="hapuscontoh.php">hapuscontoh</a>
                 <div class="produk-image">
                     <img src="img/<?php echo htmlspecialchars($result['foto_produk']); ?>" alt="Gambar Produk" style="width: 500px;">
                 </div>

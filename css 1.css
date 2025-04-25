@@ -6,6 +6,10 @@
     font-family: 'Nunito', sans-serif;
 }
 
+span {
+    color: #A5DFFA;
+}
+
 body {
     background-color: #f2f2f2;
     padding-top: 20px;
@@ -42,7 +46,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url('Img/hero-bg.jpg') no-repeat center center/cover;
+    background-image: url('Img/header-bg.jpeg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     color: #fff;
     text-align: center;
 }
@@ -74,6 +81,9 @@ body {
     padding: 40px 20px;
     background-color: #fff;
     margin-top: 20px;
+    border-radius: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .deskripsi .content {
@@ -203,3 +213,71 @@ body {
 .footer .social-links a:hover {
     color: #007bff;
 }
+
+/* login */
+
+body.login {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    }
+
+    .login-form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    }
+
+    .login-form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    }
+
+    .login-form table {
+    width: 100%;
+    }
+
+    .login-form td {
+    padding: 10px 0;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    }
+
+    .login-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    }
+
+    .login-form button:hover {
+    background-color: #0056b3;
+    }
+
+    .login-form a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    }
+
+    .login-form a:hover {
+    text-decoration: underline;
+    }

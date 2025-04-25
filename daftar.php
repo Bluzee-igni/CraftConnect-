@@ -13,7 +13,8 @@ include "koneksi.php";
 <body class="login">
     <?php
 
-        if(isset($_POST['username'])){
+
+        if(isset($_POST['submit'])){
             $nama = $_POST['nama'];
             $username = $_POST['username'];
             $password = md5($_POST['password']);
@@ -49,7 +50,7 @@ include "koneksi.php";
             </tr>
             <tr>
                 <td></td>
-                <td><button type="submit">Registrasi</button>
+                <td><button name="submit" type="submit">Registrasi</button>
                 <a href="login.php">Login</a>
             </td>
             </tr>
