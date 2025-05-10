@@ -16,10 +16,14 @@ include "koneksi.php";
 
     <?php
 
-    if (isset($_POST['username'])) {
-        $username = $_POST['username'];
-        $password = md5($_POST['password']);
+if (isset($_POST['submit'])) { 
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
+    if (empty($username) || empty($password)) { 
+        echo '<script>alert("Isi username dulu yukk.");</script>';
+    } else {
+        $password = md5($password); 
         $query = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$username' AND password='$password'");
 
         if (mysqli_num_rows($query) > 0) {
@@ -35,13 +39,14 @@ include "koneksi.php";
             echo '<script>alert("Username/password tidak sesuai.");</script>';
         }
     }
+}
     ?>
 
     <form method="post" class="login-form">
         <table align="center">
             <tr>
             <td colspan="2" align="center"></td>
-            <h3>Login User</h3>
+            <h3>Login</h3>
             </tr>
             <tr>
             <td>Username</td>
@@ -54,7 +59,7 @@ include "koneksi.php";
             <tr>
             <td></td>
             <td><button name="submit" type="submit">login</button>
-                <a href="daftar.php">daftar</a>
+                <p>Belum punya akun Yuk</p><a href="daftar.php">daftar</a>
             </td>
             </tr>
         </table>

@@ -388,21 +388,36 @@ body {
 
 body.login {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background: url('img/login.jpg') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    }
+    position: relative;
+}
 
-    .login-form {
+body.login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Warna overlay dengan transparansi */
+    backdrop-filter: blur(8px); /* Efek blur */
+    z-index: 1;
+}
+
+.login-form {
+    position: relative;
+    z-index: 2; /* Pastikan form berada di atas overlay */
     background: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 300px;
-    }
+}
 
     .login-form h3 {
     text-align: center;
@@ -416,6 +431,7 @@ body.login {
 
     .login-form td {
     padding: 10px 0;
+    color: #0D0D0D;
     }
 
     .login-form input[type="text"],
@@ -451,3 +467,18 @@ body.login {
     .login-form a:hover {
     text-decoration: underline;
     }
+    .login-form p {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #333;
+    }
+    
+    .login-form p a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    
+    .login-form p a:hover {
+        text-decoration: underline;
+    }   

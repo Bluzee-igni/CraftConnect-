@@ -29,7 +29,7 @@
 
 <div class="about-section">
     <h1>About Us</h1>
-    <p>Mengenal budaya Indonesia secara luas dan memperjualbelikannya.</p>
+    <p>Mengenal budaya Indonesia secara luas.</p>
 </div>
 
 <div class="container">
