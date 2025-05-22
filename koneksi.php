@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "belajar_database";
+$database = "craftconnect";
 
 $koneksi = mysqli_connect($host, $user, $password, $database);
     

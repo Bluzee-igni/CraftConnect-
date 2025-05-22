@@ -1,20 +1,6 @@
 <?php
 session_start();
 include "koneksi.php";
-?>
-<!DOCTYPE html>
-
-<head>
-    <html lang="en">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login Ke App</title>
-        <link rel="stylesheet" href="css 1.css">
-</head>
-
-<body class=login>
-
-    <?php
 
 if (isset($_POST['submit'])) { 
     $username = trim($_POST['username']);
@@ -24,7 +10,7 @@ if (isset($_POST['submit'])) {
         echo '<script>alert("Isi username dulu yukk.");</script>';
     } else {
         $password = md5($password); 
-        $query = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$username' AND password='$password'");
+        $query = mysqli_query($koneksi, "SELECT * FROM db_pengguna WHERE username='$username' AND password='$password'");
 
         if (mysqli_num_rows($query) > 0) {
             $data = mysqli_fetch_array($query);
@@ -42,6 +28,17 @@ if (isset($_POST['submit'])) {
 }
     ?>
 
+<!DOCTYPE html>
+
+<head>
+    <html lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Ke App</title>
+        <link rel="stylesheet" href="css1.css">
+</head>
+
+<body class=login>
     <form method="post" class="login-form">
         <table align="center">
             <tr>

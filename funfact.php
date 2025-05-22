@@ -4,22 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KYML</title>
-    <link rel="stylesheet" href="css 1.css">
     <link rel="stylesheet" href="funfact.css">
 </head>
 <body>
     <nav class="navbar">
         <a href="#" class="navbar-logo">Craft<span>Connect</span>.</a>
-
         <div class="navbar-nav">
             <a href="Index.php">Home</a>
-            <a href="#about">Kerajinan</a>
+            <a href="kerajinan.php">Kerajinan</a>
             <a href="funfact.php">KYML</a>
             <a href="About.php">Tentang Kami</a>
             <a href="logout.php">Logout</a>
+            <a href="kelola.php">+</a>
         </div>
-
-        <div class="navbar-extra">
+        <div class="navbar-extra" id="hamburger-menu">
             <a href="#" id="search"><i data-feather="search"></i></a>
             <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
             <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>

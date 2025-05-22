@@ -4,59 +4,26 @@
     --bg:#87CEFA ;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    margin: 5% 0 0;
-    padding: 40px 20px;
-  }
-  
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  
-  h1 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 30px;
-  }
-  
-  .highlight {
-    color: #3f9df5; /* Warna biru untuk kata "Langka" */
-  }
-  
-  .card {
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    margin-bottom: 30px;
-    align-items: flex-start;
-  }
-  
-  .card img {
-    width: 220px;
-    max-width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-  }
-  
-  .text {
-    flex: 1;
-  }
-  
-  .text p {
-    font-size: 15px;
-    color: #333;
-    line-height: 1.6;
+
+*{
     margin: 0;
-  }
-  
-  .navbar {
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none; 
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0D0D0D;
+    color: #ffff;
+}
+
+
+
+/*Navbar */
+.navbar {
     display: flex;
     justify-content:space-between;
     align-items: center;
@@ -90,7 +57,6 @@ body {
     display: inline;
     font-size: 1,4rem;
     margin: 0 1rem;
-    text-decoration: none;
 }
 
 .navbar .navbar-nav a:hover {
@@ -121,4 +87,27 @@ body {
 
 #hamburger-menu {
     display: none;
+}
+
+
+.container {
+  display: flex;
+  gap: 2%;
+  flex-wrap: wrap;
+}
+
+.item:nth-child(1),
+.item:nth-child(2),
+.item:nth-child(3),
+.item:nth-child(4),
+.item:nth-child(5),
+.item:nth-child(6),
+.item:nth-child(7),
+.item:nth-child(8),
+.item:nth-child(9),
+.item:nth-child(10),
+.item:nth-child(11),
+.item:nth-child(12) {
+  width: 23.5%;
+  height: 23.5%;
 }

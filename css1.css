@@ -17,6 +17,9 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #0D0D0D;
+}
+
+.hero .p {
     color: #ffff;
 }
 
@@ -177,7 +180,7 @@ body {
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 5cm;
+    margin-top: 0;
 }
 
 .deskripsi .content a:hover {
@@ -257,50 +260,80 @@ body {
 }
 
 .deskripsi .content {
-    max-width: 800px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
+/* ======= Card Produk ======= */
 .deskripsi-item {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    background-color: #f9f9f9;
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-wrap: anywhere;
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    max-width: 20vw;
+    max-height: 60vh;
+    flex-direction: column;
+    transition: transform 0.3s ease;
 }
 
+.deskripsi-item:hover {
+    transform: translateY(-5px);
+}
+
+/* ======= Gambar Produk ======= */
 .deskripsi-item img {
-    max-width: 200px;
-    margin-right: 20px;
-}
-
-.deskripsi-text {
-    flex: 1;
-}
-
-.produk {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.produk-text {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.produk-image {
-    flex: 1;
-    text-align: right;
-}
-
-.produk-image img {
-    max-width: 100%;
+    aspect-ratio: 4 / 3;
     height: auto;
+    object-fit: cover;
 }
+
+/* ======= Teks Deskripsi Produk ======= */
+.deskripsi-text {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.deskripsi-text.h3 {
+    font-size: 20px;
+    margin: 0;
+    color: #222!important;
+}
+
+.deskripsi-text p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* ======= Tombol Link Pembelian ======= */
+.deskripsi-text a {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #222;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.deskripsi-text a:hover {
+    background-color: #0056b3;
+}
+
 
 .tambah-data {
     text-align: center;
-    margin: 40px 0;
+    margin: 20px 0;
 }
 
 .btn {
@@ -338,7 +371,7 @@ body {
 
 .footer .container {
     display: flex;
-    flex-wrap: wrap;
+  
     justify-content: space-between;
 }
 
