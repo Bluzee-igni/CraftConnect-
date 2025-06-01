@@ -46,7 +46,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM db_produk");
             <a href="kerajinan.php">Kerajinan</a>
             <a href="funfact.php">KYML</a>
             <a href="About.php">Tentang Kami</a>
-            <a href="logout.php">Logout</a>
+            <a href="profil.php">Profil</a>
             <a href="kelola.php">+</a>
         </div>
         <div class="navbar-extra" id="hamburger-menu">
@@ -79,60 +79,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM db_produk");
         </div>
     </section>
 
-    <!-- Produk Dinamis -->
-    <section id="produk" class="deskripsi">
-        <div class="content">
-            <?php
-            if (mysqli_num_rows($sql) > 0) {
-                while ($result = mysqli_fetch_assoc($sql)) {
-            ?>
-                    <div class="deskripsi-item">
-                        <img src="img/<?php echo htmlspecialchars($result['foto_produk']); ?>" alt="Gambar Produk">
-                        <div class="deskripsi-text">
-                            <h1><?php echo htmlspecialchars($result['nama_produk']); ?></h1>
-                            <p><?php echo htmlspecialchars($result['penjelasan']); ?></p>
-                            <a href="<?php echo htmlspecialchars($result['link_pembelian']); ?>" target="_blank">Link Pembelian</a>
-                        </div>
-                    </div>
-            <?php
-                }
-            } else {
-                echo "<p style='text-align:center;'>Belum ada produk yang tersedia.</p>";
-            }
-            ?>
-        </div>
-    </section>
-
-
-
-
-    <!-- Tombol Tambah Data -->
-    <div class="tambah-data">
-        <a href="kelola.php" type="button" class="btn btn-primary mb-3">
-            <i class="fa fa-plus"></i> Tambah Data
-        </a>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col">
-                    <h4>Tentang Kami</h4>
-                    <ul>
-                        <li><a href="About.php">Tentang CraftConnect</a></li>
-                        <li><a href="#">Tim Kami</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Ikuti Kami</h4>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/atha_f.pdf/"><i data-feather="instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+ 
 
     <!-- Feather Icon -->
     <script>

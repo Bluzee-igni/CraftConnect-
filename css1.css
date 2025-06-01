@@ -253,33 +253,34 @@ body {
 .deskripsi {
     padding: 40px 20px;
     background-color: #fff;
-    margin-top: 20px;
+    padding-top: 100px; /* Tambahkan ruang agar tidak tertutup navbar */
     border-radius: 20px;
     margin-left: 10%;
     margin-right: 10%;
 }
 
+
 .deskripsi .content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* 4 kolom tetap */
     gap: 15px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+
 /* ======= Card Produk ======= */
 .deskripsi-item {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     background-color: #f9f9f9;
-    backdrop-filter: blur(10px);
     border-radius: 16px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow-wrap: anywhere;
+    overflow: hidden;
     display: flex;
-    max-width: 20vw;
-    max-height: 60vh;
     flex-direction: column;
+    width: 100%;
+    max-width: 300px;
     transition: transform 0.3s ease;
+    margin: auto;   
 }
 
 .deskripsi-item:hover {
@@ -288,42 +289,44 @@ body {
 
 /* ======= Gambar Produk ======= */
 .deskripsi-item img {
-    aspect-ratio: 4 / 3;
-    height: auto;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
+    display: block;
 }
 
 /* ======= Teks Deskripsi Produk ======= */
 .deskripsi-text {
-    padding: 20px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    flex: 1;
 }
 
-.deskripsi-text.h3 {
-    font-size: 20px;
-    margin: 0;
-    color: #222!important;
+.deskripsi-text h3 {
+    font-size: 18px;
+    margin: 0 0 8px;
+    color: #222;
 }
 
 .deskripsi-text p {
     font-size: 14px;
     color: #444;
     line-height: 1.5;
+    margin-bottom: 12px;
+    flex-grow: 1;
 }
 
 /* ======= Tombol Link Pembelian ======= */
 .deskripsi-text a {
-    margin-top: auto;
-    align-self: flex-start;
-    padding: 8px 16px;
+    padding: 8px 12px;
     background-color: #007bff;
-    color: #222;
+    color: #fff;
     text-decoration: none;
     border-radius: 6px;
     font-size: 14px;
     transition: background-color 0.3s;
+    align-self: flex-start;
 }
 
 .deskripsi-text a:hover {

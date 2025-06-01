@@ -14,7 +14,7 @@
             <a href="kerajinan.php">Kerajinan</a>
             <a href="funfact.php">KYML</a>
             <a href="About.php">Tentang Kami</a>
-            <a href="logout.php">Logout</a>
+            <a href="profil.php">Profil</a>
             <a href="kelola.php">+</a>
         </div>
         <div class="navbar-extra" id="hamburger-menu">

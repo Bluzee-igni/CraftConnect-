@@ -9,7 +9,7 @@
 
             if ($berhasil) {
                 $_SESSION['eksekusi'] = "berhasil";
-                header("location:index.php");
+                header("location:kerajinan.php");
             } else {	
                 echo $berhasil;
             }
@@ -19,7 +19,7 @@
             $berhasil = ubah_data($_POST, $_FILES);
             
             if ($berhasil) {
-                header("location:index.php");
+                header("location:kerajinan.php");
             } else {	
                 echo $berhasil;
             }
@@ -31,7 +31,7 @@
         
         $berhasil = hapus_data($_GET);
         if ($berhasil) {
-            header("location: index.php");
+            header("location: kerajinan.php");
         } else {	
             echo $berhasil;
         }

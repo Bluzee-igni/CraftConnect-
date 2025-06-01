@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}
+
+.pesanan-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.pesanan-card {
+    background: #eee;
+    border-radius: 10px;
+    display: flex;
+    padding: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pesanan-image img {
+    width: 120px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.pesanan-info {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.pesanan-status {
+    text-align: center;
+    min-width: 120px;
+}
+
+.status {
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Status Styles */
+.status.ditanyakan {
+    background: #e0e0e0;
+    color: #333;
+}
+.status.diproses {
+    background: #fff3cd;
+    color: #856404;
+}
+.status.selesai {
+    background: #d4edda;
+    color: #155724;
+}
+.status.dibatalkan {
+    background: #f8d7da;
+    color: #721c24;
+}

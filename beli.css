@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: black;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  max-width: 1200px;
+  background-color: #111;
+  padding: 30px;
+  border-radius: 20px;
+  gap: 40px;
+}
+
+.left {
+  flex: 1 1 300px;
+}
+
+.left img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.left p {
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.logo span {
+  color: #4AB5F1;
+}
+
+.right {
+  flex: 2 1 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.option-btn {
+  background-color: #ccc;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.option-btn:hover {
+  background-color: #aaa;
+}
+
+.price-input {
+  margin-bottom: 30px;
+}
+
+.price-input input {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #ddd, #4AB5F1);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn.cancel {
+  background-color: #D9534F;
+  color: white;
+}
+
+.btn.buy {
+  background-color: #5CB85C;
+  color: white;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}

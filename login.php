@@ -12,17 +12,18 @@ if (isset($_POST['submit'])) {
         $password = md5($password); 
         $query = mysqli_query($koneksi, "SELECT * FROM db_pengguna WHERE username='$username' AND password='$password'");
 
-        if (mysqli_num_rows($query) > 0) {
-            $data = mysqli_fetch_array($query);
-            $_SESSION['user'] = $data;
+       if (mysqli_num_rows($query) > 0) {
+    $data = mysqli_fetch_array($query);
+    $_SESSION['user'] = $data;
+    $_SESSION['id_user'] = $data['id_user']; // Tambahkan baris ini agar bisa dipakai di profil.php
 
-            if ($data['role'] == 'admin') {
-                echo '<script>alert("Selamat datang, Admin ' . $data['nama'] . '"); location.href="indexadmin.php";</script>';
-            } else {
-                echo '<script>alert("Selamat datang, ' . $data['nama'] . '"); location.href="Index.php";</script>';
-            }
+    if ($data['role'] == 'admin') {
+        echo '<script>alert("Selamat datang, Admin ' . $data['nama'] . '"); location.href="admin.php";</script>';
+    } else {
+        echo '<script>alert("Selamat datang, ' . $data['nama'] . '"); location.href="Index.php";</script>';
+    }
         } else {
-            echo '<script>alert("Username/password tidak sesuai.");</script>';
+            echo '<script>alert("Username atau password salah.");</script>';
         }
     }
 }

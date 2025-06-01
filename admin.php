@@ -1,7 +1,7 @@
 <?php
 include 'koneksi.php';
 
-$query = "SELECT * FROM user";
+$query = "SELECT * FROM db_pengguna WHERE role != 'admin' ORDER BY id_user ASC";
 $result = mysqli_query($koneksi, $query);
 ?>
 

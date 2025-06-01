@@ -7,7 +7,7 @@ function tambah_data($data, $files)
     $id_kategori = $data['id_kategori'];
     $nama_produk = $data['nama_produk'];
     $penjelasan = $data['penjelasan'];
-    $link_pembelian = $data['link_pembelian'];
+    $harga = $data['harga']; 
 
     $split = explode('.', $files['foto_produk']['name']);
     $ekstensi = $split[count($split) - 1];
@@ -18,7 +18,8 @@ function tambah_data($data, $files)
 
     move_uploaded_file($tmpFile, $dir . $foto_produk);
 
-    $query = "INSERT INTO db_produk (id_user, id_kategori, nama_produk, penjelasan, link_pembelian, foto_produk) VALUES ('$id_user', '$id_kategori', '$nama_produk', '$penjelasan', '$link_pembelian', '$foto_produk')";
+    $query = "INSERT INTO db_produk (id_user, id_kategori, nama_produk, penjelasan, harga, foto_produk) 
+              VALUES ('$id_user', '$id_kategori', '$nama_produk', '$penjelasan', '$harga', '$foto_produk')";
     $sql = mysqli_query($GLOBALS['koneksi'], $query);
 
     return true;
@@ -29,7 +30,7 @@ function ubah_data($data, $files)
     $id_produk = $data['id_produk'];
     $nama_produk = $data['nama_produk'];
     $penjelasan = $data['penjelasan'];
-    $link_pembelian = $data['link_pembelian'];
+    $harga = $data['harga']; 
 
     $queryShow = "SELECT * FROM db_produk WHERE id_produk = '$id_produk';";
     $sqlShow = mysqli_query($GLOBALS['koneksi'], $queryShow);
@@ -39,13 +40,16 @@ function ubah_data($data, $files)
         $foto_produk = $result['foto_produk'];
     } else {
         $split = explode('.', $files['foto_produk']['name']);
-        $ekstensi = $split[count($split) - 1];
+        $ekstensi = end($split);
         $foto_produk = uniqid() . '.' . $ekstensi;
+
         unlink("img/" . $result['foto_produk']);
         move_uploaded_file($files['foto_produk']['tmp_name'], 'img/' . $foto_produk);
     }
 
-    $query = "UPDATE db_produk SET nama_produk='$nama_produk', penjelasan='$penjelasan', link_pembelian='$link_pembelian', foto_produk='$foto_produk' WHERE id_produk='$id_produk';";
+    $query = "UPDATE db_produk 
+              SET nama_produk='$nama_produk', penjelasan='$penjelasan', harga='$harga', foto_produk='$foto_produk' 
+              WHERE id_produk='$id_produk';";
     $sql = mysqli_query($GLOBALS['koneksi'], $query);
 
     return true;
