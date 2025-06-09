@@ -1,0 +1,63 @@
+/* ======= Card Produk ======= */
+.deskripsi-item {
+    background-color: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s ease;
+    margin: auto;   
+}
+
+.deskripsi-item:hover {
+    transform: translateY(-5px);
+}
+
+/* ======= Gambar Produk ======= */
+.deskripsi-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ======= Teks Deskripsi Produk ======= */
+.deskripsi-text {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.deskripsi-text h3 {
+    font-size: 18px;
+    margin: 0 0 8px;
+    color: #222;
+}
+
+.deskripsi-text p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    flex-grow: 1;
+}
+
+/* ======= Tombol Link Pembelian ======= */
+.deskripsi-text a {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+}
+
+.deskripsi-text a:hover {
+    background-color: #0056b3;
+}

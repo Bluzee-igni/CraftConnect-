@@ -2,6 +2,9 @@
 session_start();
 include 'koneksi.php';
 
+session_start();
+include 'koneksi.php';
+
 // Cek jika belum login
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
@@ -38,60 +41,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $id_produk_submitted !== null) {
 
 // Ambil semua produk dari database
 $cek_produk = $conn->query("SELECT * FROM db_produk");
-
-session_start();
-if (isset($_SESSION['eksekusi'])) {
-    echo "<div style='padding: 10px; background-color: #d4edda; color: #155724; border-radius: 5px; margin-bottom: 15px;'>
-            {$_SESSION['eksekusi']}
-          </div>";
-    unset($_SESSION['eksekusi']);
-}
-if (isset($_SESSION['error'])) {
-    echo "<div style='padding: 10px; background-color: #f8d7da; color: #721c24; border-radius: 5px; margin-bottom: 15px;'>
-            {$_SESSION['error']}
-          </div>";
-    unset($_SESSION['error']);
-}
+?>
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kerajinan</title>
-    <link rel="stylesheet" href="css1.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CraftConnect - Kelola Pesanan</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="kelola_kerajinan.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <nav class="navbar">
-        <a href="#" class="navbar-logo">Craft<span>Connect</span>.</a>
-        <div class="navbar-nav">
-            <a href="Index.php">Home</a>
-            <a href="kerajinan.php">Kerajinan</a>
-            <a href="funfact.php">KYML</a>
-            <a href="About.php">Tentang Kami</a>
-            <a href="profil.php">Profil</a>
-            <a href="kelola.php">+</a>
-        </div>
-        <div class="navbar-extra" id="hamburger-menu">
-            <a href="#" id="search"><i data-feather="search"></i></a>
-            <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
-            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-        </div>
-    </nav>
+  <div class="container">
+    <aside class="sidebar">
+      <h2><span class="brand-white">Craft</span><span class="brand-blue">Connect.</span></h2>
+      <a href="admin.php" class="nav-link">Data User</a>
+      <a href="kelola_pesanan.php" class="nav-link active">Data Pesanan</a>
+      <a href="kelola_funfact.php" class="nav-link">Funfact</a>
+      <a href="kerajinan.php" class="nav-link">Kerajinan</a>
+      <a href="logout.php" class="logout-btn">Log Out ?</a>
+    </aside>
 
-    <section id="produk" class="deskripsi">
+    <main class="content">
+      <h1>Kerajinan Yang Kami Tampilkan</h1>
+        <div class="card-wrapper">  
+          <section id="produk" class="deskripsi">
         <div class="content">
             <?php while ($row = $cek_produk->fetch_assoc()) :
                 $id_produk = $row['id_produk'];
 
-                // Cek apakah user sudah like produk 
+                // Cek apakah user sudah like produk ini
                 $cek_like = $conn->query("SELECT 1 FROM db_suka_produk WHERE id_user = '$id_user' AND id_produk = '$id_produk'");
                 $sudah_like = ($cek_like && $cek_like->num_rows > 0);
 
-                // total like 
+                // Hitung total like untuk produk ini
                 $query_like = "SELECT COUNT(*) as total FROM db_suka_produk WHERE id_produk = '$id_produk'";
                 $result_like = mysqli_query($conn, $query_like);
                 $row_like = mysqli_fetch_assoc($result_like)['total'];
@@ -116,6 +104,8 @@ if (isset($_SESSION['error'])) {
             <?php endwhile; ?>
         </div>
     </section>
+    </main>
+  </div>
 </body>
 
 </html>

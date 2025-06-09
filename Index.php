@@ -64,22 +64,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM db_produk");
             <p>Dukung dan lestarikan budaya Indonesia dengan bangga menggunakan produk kerajinan lokal!</p>
             <a href="#" class="cta">Yuk Lihat-Lihat</a>
         </main>
-    </section>
-
-    <!-- Deskripsi Khusus (Statik) -->
-    <section id="about" class="deskripsi">
-        <div class="content">
-            <div class="deskripsi-item">
-                <img src="img/gambar_bedog.png" alt="Bedog">
-                <div class="deskripsi-text">
-                    <p>Bedog adalah senjata tradisional dari Jawa yang awalnya digunakan sebagai alat serbaguna dalam kehidupan agraris, seperti menebas rumput atau memotong kayu. Selain itu, bedog juga berfungsi sebagai senjata bela diri bagi petani, terutama di masa penjajahan...</p>
-                    <a href="https://www.lazada.co.id/products/bedog-panguseupan-panjang-bilahper-bajanya-19-cm-kerajinan-khas-daerah-tasikmalaya-jawa-barat-harga-yang-tertera-untuk-satu-buah-barang-i1841198621-s13937234796.html?from_gmc=1&fl_tag=1" target="_blank">Link Pembelian</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
- 
+    </section> 
 
     <!-- Feather Icon -->
     <script>

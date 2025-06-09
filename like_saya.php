@@ -36,7 +36,7 @@ if (!$result) {
         <a href="#" class="navbar-logo">Craft<span>Connect</span>.</a>
         <div class="navbar-nav">
             <a href="Index.php">Home</a>
-            <a href="#about">Kerajinan</a>
+            <a href="kerajinan.php">Kerajinan</a>
             <a href="funfact.php">KYML</a>
             <a href="About.php">Tentang Kami</a>
             <a href="profil.php">Profil</a>

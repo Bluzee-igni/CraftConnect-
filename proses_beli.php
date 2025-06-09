@@ -27,11 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $harga_satuan = intval($produk['harga']);
     $total_harga = $harga_satuan * $qty;
 
-    // Simpan pesanan ke db_pesanan (tambahkan kolom status)
+    // Simpan pesanan ke db_pesanan
     $sql = "INSERT INTO db_pesanan (id_user, id_produk, jumlah, total_harga, status, tanggal_pesan)
             VALUES ($id_user, $id_produk, $qty, $total_harga, 'Ditanyakan', NOW())";
 
     if (mysqli_query($conn, $sql)) {
+        // ✅ Tambahkan pesan ke session
+        $_SESSION['eksekusi'] = "Pesanan Anda berhasil dimasukkan ke keranjang. Silakan cek di halaman keranjang.";
         header("Location: kerajinan.php");
         exit;
     } else {

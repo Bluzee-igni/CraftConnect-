@@ -63,7 +63,7 @@ $harga = intval($produk['harga']);
     const hargaSatuan = <?= $harga ?>;
     const qtyInput = document.getElementById('qtyInput');
     const totalHarga = document.getElementById('totalHarga');
-
+              
     function setQty(qty) {
       qtyInput.value = qty;
       updateTotal();

@@ -61,3 +61,18 @@ body {
     background: #f8d7da;
     color: #721c24;
 }
+.tombol-bayar {
+    background-color: #8ed0ff;
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.tombol-bayar:hover {
+    background-color: #6db3e0;
+    color: white;
+}

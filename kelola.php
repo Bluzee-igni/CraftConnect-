@@ -27,9 +27,8 @@ if (isset($_GET['ubah'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="fontawsome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="kelola.css">
     <title>Kelola Produk</title>
 </head>
 <body>
