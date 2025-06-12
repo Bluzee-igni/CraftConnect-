@@ -32,7 +32,6 @@ if (!$result) {
     <div class="navbar-nav">
         <a href="Index.php">Home</a>
         <a href="kerajinan.php">Kerajinan</a>
-        <a href="funfact.php">KYML</a>
         <a href="About.php">Tentang Kami</a>
         <a href="profil.php">Profil</a>
         <a href="kelola.php">+</a>
@@ -73,10 +72,19 @@ if (!$result) {
 
                         <?php if (strtolower($row['status']) == 'diproses' && !$sudah_dibayar): ?>
                             <a href="bayar.php?id_pesanan=<?= $row['id_pesanan'] ?>" class="tombol-bayar">
-                                <em><strong>BAYAR</strong></em>
+                                <em><strong>bayar</strong></em>
                             </a>
                         <?php elseif (strtolower($row['status']) == 'diproses' && $sudah_dibayar): ?>
-                            <p style="color: green; font-weight: bold;"><em>Sudah Dibayar</em></p>
+                            <p class="tombol-diproses">
+                                <em>
+                        <?php elseif (strtolower($row['status']) == 'selesai' && $sudah_dibayar): ?>
+                            <a href="bayar_sukses.php?id_pesanan=<?= $row['id_pesanan'] ?>" class="tombol-selesai">
+                                <em><strong>lihat Status</strong></em>
+                            </a>
+                        <?php elseif (strtolower($row['status']) == 'ditolak' && $sudah_dibayar): ?>
+                            <a href="bayar_gagal.php?id_pesanan=<?= $row['id_pesanan'] ?>" class="tombol-gagal">
+                                <em><strong>lihat Status</strong></em>
+                            </a>
                         <?php endif; ?>
                     </div>
                 </div>

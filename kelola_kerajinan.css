@@ -1,3 +1,7 @@
+body {
+    overflow-y: hidden;
+}
+
 /* ======= Card Produk ======= */
 .deskripsi-item {
     background-color: #f9f9f9;
@@ -9,14 +13,14 @@
     width: 100%;
     max-width: 300px;
     transition: transform 0.3s ease;
-    margin: auto;   
+    margin: auto;
 }
 
 .deskripsi-item:hover {
     transform: translateY(-5px);
 }
 
-/* ======= Gambar Produk ======= */
+
 .deskripsi-item img {
     width: 100%;
     height: 200px;
@@ -24,7 +28,7 @@
     display: block;
 }
 
-/* ======= Teks Deskripsi Produk ======= */
+
 .deskripsi-text {
     padding: 16px;
     display: flex;
@@ -60,4 +64,38 @@
 
 .deskripsi-text a:hover {
     background-color: #0056b3;
+}
+
+main.content {
+    overflow-y: auto;
+    width: 100%;
+}
+
+.card-wrapper {
+    width: 100%;
+}
+
+.content {
+    gap: 25px;
+    flex-direction: column;
+    display: flex;
+}
+.btn-beli {
+    background-color: #007BFF;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-hapus {
+    font-size: 18px;
+    text-decoration: none;
+    padding: 4px;
+    transition: transform 0.2s ease;
+}
+
+.btn-hapus:hover {
+    transform: scale(1.2);
 }

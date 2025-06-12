@@ -76,3 +76,14 @@ body {
     background-color: #6db3e0;
     color: white;
 }
+.tombol-selesai {
+    background-color: #c3e6cb;
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}

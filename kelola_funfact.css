@@ -1,40 +1,118 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f4f4f4;
-}
-
-.container {
-  margin: 20px auto;
-  width: 90%;
-  max-width: 900px;
-}
-
-.card {
-  background: #fff;
-  margin-bottom: 20px;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 5px #ccc;
-}
-
-.card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-.btn {
-  padding: 8px 12px;
-  margin: 5px;
-  border: none;
-  border-radius: 5px;
-  background-color: #2d89ef;
-  color: white;
-  cursor: pointer;
-}
-
-.form-upload,
-.form-komen {
-  margin-top: 10px;
-}
+    body {
+    font-family: 'Inter', sans-serif;
+  }
+  .funfact-card {
+    background-color: #f3f4f6; /* Tailwind gray-100 */
+    border-radius: 0.75rem; /* rounded-xl */
+    padding: 1.5rem; /* p-6 */
+    margin-bottom: 2rem;
+  }
+  .funfact-judul {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 0.75rem;
+  }
+  .funfact-gambar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .gambar-funfact {
+    border-radius: 0.375rem; /* rounded */
+    max-width: 100%;
+    height: auto;
+  }
+  .funfact-deskripsi {
+    font-size: 0.875rem; /* text-sm */
+    white-space: pre-line;
+    margin-bottom: 1rem;
+  }
+  .aksi-suka {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .btn-like, .btn-unlike {
+    padding: 0.25rem 0.75rem; /* px-3 py-1 */
+    border-radius: 0.375rem; /* rounded */
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    border: none;
+  }
+  .btn-like {
+    background-color: #3b82f6; /* blue-500 */
+  }
+  .btn-like:hover {
+    background-color: #2563eb; /* blue-600 */
+  }
+  .btn-unlike {
+    background-color: #ef4444; /* red-500 */
+  }
+  .btn-unlike:hover {
+    background-color: #dc2626; /* red-600 */
+  }
+  .jumlah-like {
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500;
+    color: #374151; /* gray-700 */
+  }
+  .pesan-login {
+    font-style: italic;
+    color: #6b7280; /* gray-500 */
+    font-size: 0.875rem; /* text-sm */
+  }
+  .komentar-section {
+    margin-top: 1rem;
+  }
+  .judul-komentar {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .daftar-komentar {
+    max-height: 12rem; /* max-h-48 */
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 0.375rem; /* rounded */
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .item-komentar {
+    font-size: 0.875rem; /* text-sm */
+    margin-bottom: 0.25rem;
+  }
+  .form-komentar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .input-komentar {
+    width: 100%;
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 0.375rem; /* rounded */
+    padding: 0.5rem;
+    font-size: 0.875rem; /* text-sm */
+    resize: none;
+    outline: none;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  .input-komentar:focus {
+    box-shadow: 0 0 0 2px #60a5fa; /* ring-2 ring-blue-400 */
+    border-color: #3b82f6; /* blue-500 */
+  }
+  .btn-kirim-komentar {
+    padding: 0.5rem 1rem;
+    background-color: #2563eb; /* blue-700 */
+    color: white;
+    border-radius: 0.375rem; /* rounded */
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+  }
+  .btn-kirim-komentar:hover {
+    background-color: #1e40af; /* blue-800 */
+  }

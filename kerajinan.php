@@ -28,13 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $id_produk_submitted !== null) {
     // Cek apakah user sudah menyukai produk ini
     $cek = $conn->query("SELECT * FROM db_suka_produk WHERE id_user = '$id_user' AND id_produk = '$id_produk_submitted'");
 
-    if ($cek->num_rows <= 0) {mysqli_query($conn,"INSERT INTO db_suka_produk (id_user, id_produk) VALUES ('$id_user', '$id_produk_submitted')");
-        } else {
-            mysqli_query($conn, "DELETE FROM db_suka_produk WHERE id_user = '$id_user' AND id_produk = '$id_produk_submitted'");
-            header("Location: kerajinan.php");
-            exit;
-        }
+    if ($cek->num_rows <= 0) {
+        mysqli_query($conn, "INSERT INTO db_suka_produk (id_user, id_produk) VALUES ('$id_user', '$id_produk_submitted')");
+    } else {
+        mysqli_query($conn, "DELETE FROM db_suka_produk WHERE id_user = '$id_user' AND id_produk = '$id_produk_submitted'");
+        header("Location: kerajinan.php");
+        exit;
     }
+}
 
 // Ambil semua produk dari database
 $cek_produk = $conn->query("SELECT * FROM db_produk");
@@ -62,6 +63,7 @@ if (isset($_SESSION['error'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kerajinan</title>
     <link rel="stylesheet" href="css1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -70,7 +72,6 @@ if (isset($_SESSION['error'])) {
         <div class="navbar-nav">
             <a href="Index.php">Home</a>
             <a href="kerajinan.php">Kerajinan</a>
-            <a href="funfact.php">KYML</a>
             <a href="About.php">Tentang Kami</a>
             <a href="profil.php">Profil</a>
             <a href="kelola.php">+</a>
@@ -103,12 +104,25 @@ if (isset($_SESSION['error'])) {
 
                         <p><?php echo htmlspecialchars($row['penjelasan']); ?></p>
 
-                       <a href="beli.php?id=<?= $row['id_produk'] ?>">Beli Sekarang</a>
+                        <div class="tombol-aksi">
+                            <a href="beli.php?id=<?= $row['id_produk'] ?>" class="btn-beli">Beli Sekarang</a>
+                            <?php if ($row['id_user'] == $id_user): ?>
+                                <a href="proses.php?hapus=<?= $row['id_produk'] ?>"
+                                    onclick="return confirm('Yakin ingin menghapus produk ini?')"
+                                    class="btn-hapus"
+                                    title="Hapus Produk">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+
                         <p>Harga: Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></p>
+
                         <form method="POST" action="kerajinan.php?id_produk=<?php echo $id_produk; ?>">
-                            <button type="submit" name=<?php echo $sudah_like ? 'unlike' : 'like'; ?>; ?>>
-                                <?php echo $sudah_like ? "Disukai" : "Suka"; ?>
+                            <button type="submit" name="<?php echo $sudah_like ? 'unlike' : 'like'; ?>" class="like-button">
+                                <i class="fa<?php echo $sudah_like ? 's' : 'r'; ?> fa-heart"></i>
                             </button>
+                            <a class="komentar" href="komentar.php?id_produk=<?php echo $id_produk; ?>">Lihat Komentar</a>
                         </form>
                         <p>Total Like: <?php echo $row_like; ?></p>
                     </div>

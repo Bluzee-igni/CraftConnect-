@@ -32,8 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_pesanan'], $_POST['
       <h2><span class="brand-white">Craft</span><span class="brand-blue">Connect.</span></h2>
       <a href="admin.php" class="nav-link">Data User</a>
       <a href="kelola_pesanan.php" class="nav-link active">Data Pesanan</a>
-      <a href="kelola_funfact.php" class="nav-link">Funfact</a>
-      <a href="kerajinan.php" class="nav-link">Kerajinan</a>
+      <a href="kelola_kerajinan.php" class="nav-link">Kerajinan</a>
       <a href="logout.php" class="logout-btn">Log Out ?</a>
     </aside>
 

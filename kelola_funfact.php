@@ -1,59 +1,108 @@
 <?php
 session_start();
-include 'koneksi.php'; // koneksi ke database
+include 'koneksi.php';
 
-$id_user = $_SESSION['id_user'] ?? 1; // sementara, untuk tes
+$id_pengguna = $_SESSION['id_pengguna'] ?? null;
 
-// Ambil data produk
-$query = mysqli_query($conn, "SELECT * FROM db_produk ORDER BY created_at DESC");
+// Fungsi bantu
+function sudahDisukai($koneksi, $id_funfact, $id_pengguna) {
+    $cek = mysqli_query($koneksi, "SELECT * FROM db_suka_produk WHERE id_produk = '$id_funfact' AND id_pengguna = '$id_pengguna'");
+    return mysqli_num_rows($cek) > 0;
+}
+
+function jumlahLike($koneksi, $id_funfact) {
+    $q = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM db_suka_produk WHERE id_produk = '$id_funfact'");
+    $data = mysqli_fetch_assoc($q);
+    return $data['total'];
+}
+
+function ambilKomentar($koneksi, $id_funfact) {
+    return mysqli_query($koneksi, "d
+        SELECT k.*, p.nama_pengguna 
+        FROM db_komentar k 
+        JOIN db_pengguna p ON k.id_pengguna = p.id_pengguna 
+        WHERE k.id_produk = '$id_funfact' 
+        ORDER BY k.tanggal_komentar DESC
+    ");
+}
+
+// Proses form
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id_funfact = $_POST['id_funfact'];
+
+    if (isset($_POST['like']) && $id_pengguna) {
+        mysqli_query($koneksi, "INSERT INTO db_suka_produk (id_produk, id_pengguna) VALUES ('$id_funfact', '$id_pengguna')");
+    } elseif (isset($_POST['unlike']) && $id_pengguna) {
+        mysqli_query($koneksi, "DELETE FROM db_suka_produk WHERE id_produk = '$id_funfact' AND id_pengguna = '$id_pengguna'");
+    } elseif (isset($_POST['kirim']) && $id_pengguna) {
+        $isi_komentar = mysqli_real_escape_string($koneksi, $_POST['isi_komentar']);
+        mysqli_query($koneksi, "INSERT INTO db_komentar (id_produk, id_pengguna, isi_komentar, tanggal_komentar) VALUES ('$id_funfact', '$id_pengguna', '$isi_komentar', NOW())");
+    }
+
+    header("Location: funfact.php");
+    exit;
+}
+
+// Ambil semua funfact
+$query_funfact = mysqli_query($koneksi, "SELECT * FROM db_funfact ORDER BY created_at DESC");
 ?>
 
-<link rel="stylesheet" href="kelola_funfact.css">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Halaman Funfact - CraftConnect</title>
+</head>
+<body>
+    <h1 class="judul-halaman">Halaman Funfact</h1>
 
-<div class="container">
-  <h2>Kerajinan yang Sudah Mulai Langka</h2>
+    <?php while ($f = mysqli_fetch_assoc($query_funfact)) : ?>
+        <div class="funfact-card">
+            <h2 class="funfact-judul"><?= htmlspecialchars($f['judul']); ?></h2>
+            <div class="funfact-gambar">
+                <img src="img/<?= htmlspecialchars($f['gambar']); ?>" alt="<?= htmlspecialchars($f['judul']); ?>" class="gambar-funfact" width="300">
+            </div>
+            <p class="funfact-deskripsi"><?= nl2br(htmlspecialchars($f['deskripsi'])); ?></p>
 
-  <!-- Form Upload Produk -->
-  <form class="form-upload" action="upload_produk.php" method="post" enctype="multipart/form-data">
-    <input type="text" name="nama_produk" placeholder="Nama Produk" required><br>
-    <textarea name="penjelasan" placeholder="Penjelasan Produk" required></textarea><br>
-    <input type="file" name="foto_produk" accept="image/*" required><br>
-    <input type="number" name="harga" placeholder="Harga"><br>
-    <input type="hidden" name="id_user" value="<?= $id_user ?>">
-    <input type="hidden" name="id_kategori" value="1">
-    <button class="btn" type="submit">Upload Produk</button>
-  </form>
+            <!-- LIKE -->
+            <div class="aksi-suka">
+                <?php if ($id_pengguna): ?>
+                    <form method="post" class="form-suka">
+                        <input type="hidden" name="id_funfact" value="<?= $f['id_funfact']; ?>">
+                        <?php if (sudahDisukai($koneksi, $f['id_funfact'], $id_pengguna)): ?>
+                            <button type="submit" name="unlike" class="btn-unlike">Batal Suka</button>
+                        <?php else: ?>
+                            <button type="submit" name="like" class="btn-like">Suka</button>
+                        <?php endif; ?>
+                        <span class="jumlah-like"><?= jumlahLike($koneksi, $f['id_funfact']); ?> suka</span>
+                    </form>
+                <?php else: ?>
+                    <p class="pesan-login"><em>Login untuk menyukai funfact ini.</em></p>
+                <?php endif; ?>
+            </div>
 
-  <hr>
+            <!-- KOMENTAR -->
+            <div class="komentar-section">
+                <h4 class="judul-komentar">Komentar:</h4>
+                <div class="daftar-komentar">
+                    <?php
+                    $komentar = ambilKomentar($koneksi, $f['id_funfact']);
+                    while ($k = mysqli_fetch_assoc($komentar)) :
+                    ?>
+                        <p class="item-komentar"><strong><?= htmlspecialchars($k['nama_pengguna']); ?>:</strong> <?= htmlspecialchars($k['isi_komentar']); ?></p>
+                    <?php endwhile; ?>
+                </div>
 
-  <?php while($row = mysqli_fetch_assoc($query)): ?>
-    <div class="card">
-      <img src="img/<?= $row['foto_produk'] ?>" alt="foto">
-      <h3><?= htmlspecialchars($row['nama_produk']) ?></h3>
-      <p><?= nl2br(htmlspecialchars($row['penjelasan'])) ?></p>
-
-      <!-- Like & Komentar -->
-      <form action="like.php" method="post" style="display:inline;">
-        <input type="hidden" name="id_produk" value="<?= $row['id_produk'] ?>">
-        <input type="hidden" name="id_user" value="<?= $id_user ?>">
-        <button class="btn" type="submit">👍 Like</button>
-      </form>
-
-      <!-- Komentar -->
-      <form class="form-komen" action="komen.php" method="post">
-        <input type="hidden" name="id_produk" value="<?= $row['id_produk'] ?>">
-        <input type="hidden" name="id_user" value="<?= $id_user ?>">
-        <input type="text" name="isi_komentar" placeholder="Tulis komentar..." required>
-        <button class="btn" type="submit">💬 Kirim</button>
-      </form>
-
-      <?php
-        $id_produk = $row['id_produk'];
-        $komen = mysqli_query($conn, "SELECT * FROM db_komentar WHERE id_produk = $id_produk ORDER BY created_at DESC");
-        while($k = mysqli_fetch_assoc($komen)):
-      ?>
-        <p><strong>Komentar:</strong> <?= htmlspecialchars($k['isi_komentar']) ?> <em>(<?= $k['created_at'] ?>)</em></p>
-      <?php endwhile; ?>
-    </div>
-  <?php endwhile; ?>
-</div>
+                <?php if ($id_pengguna): ?>
+                    <form method="post" class="form-komentar">
+                        <input type="hidden" name="id_funfact" value="<?= $f['id_funfact']; ?>">
+                        <textarea name="isi_komentar" required placeholder="Tulis komentar..." class="input-komentar" rows="2" cols="40"></textarea><br>
+                        <button type="submit" name="kirim" class="btn-kirim-komentar">Kirim Komentar</button>
+                    </form>
+                <?php else: ?>
+                    <p class="pesan-login"><em>Login untuk memberi komentar.</em></p>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endwhile; ?>
+</body>
+</html>

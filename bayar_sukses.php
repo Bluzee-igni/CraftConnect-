@@ -17,7 +17,7 @@
 </head>
 <body>
   <div
-    class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-sky-400 to-black"
+   <div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-sky-400 to-white">
   >
     <div class="flex justify-center mb-6">
       <svg
@@ -42,18 +42,20 @@
     <p class="text-black text-xs italic font-semibold mb-6">
       Hubungi admin untuk Konfirmasi Alamat Di +62812 - 5499 - 6464
     </p>
-    <button
+    <a href="kerajinan.php"
+      class="bg-white text-black font-semibold italic text-sm rounded-md px-6 py-2 mb-3 hover:bg-gray-200 transition"
       type="button"
       class="bg-sky-400 text-white font-semibold italic text-sm rounded-md px-4 py-2 mb-3 hover:bg-sky-500 transition"
     >
       Lanjut Berbelanja ?
-    </button>
-    <button
+  </a>
+    <a href="pesanan.php"
+      class="bg-white text-black font-semibold italic text-sm rounded-md px-6 py-2 hover:bg-gray-200 transition"
       type="button"
       class="bg-lime-400 text-white font-semibold italic text-sm rounded-md px-6 py-2 hover:bg-lime-500 transition"
     >
       Kembali
-    </button>
+  </a>
   </div>
 </body>
 </html>

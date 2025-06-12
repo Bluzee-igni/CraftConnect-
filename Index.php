@@ -44,7 +44,6 @@ $sql = mysqli_query($koneksi, "SELECT * FROM db_produk");
         <div class="navbar-nav">
             <a href="#">Home</a>
             <a href="kerajinan.php">Kerajinan</a>
-            <a href="funfact.php">KYML</a>
             <a href="About.php">Tentang Kami</a>
             <a href="profil.php">Profil</a>
             <a href="kelola.php">+</a>
