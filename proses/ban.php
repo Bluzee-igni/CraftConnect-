@@ -1,10 +1,11 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 
 if (isset($_GET['id_user'])) {
     $id_user = intval($_GET['id_user']);
     $query = "UPDATE db_pengguna SET role = 'banned' WHERE id_user = $id_user";
     mysqli_query($koneksi, $query);
-    header('Location: Admin.php');
+    header("Location: ../Admin.php");
 }
 ?>
+

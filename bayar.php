@@ -56,7 +56,7 @@ $id_transaksi = $id_pesanan;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Upload Bukti Pembayaran</title>
-  <link rel="stylesheet" href="bayar.css">
+  <link rel="stylesheet" href="css/bayar.css">
 </head>
 <body>
   <div class="container">
@@ -101,3 +101,4 @@ $id_transaksi = $id_pesanan;
   </div>
 </body>
 </html>
+

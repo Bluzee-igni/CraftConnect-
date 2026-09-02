@@ -51,7 +51,7 @@ body {
 }
 
 /* ======= Tombol Link Pembelian ======= */
-.deskripsi-text a {
+.btn-beli {
     padding: 8px 12px;
     background-color: #007bff;
     color: #fff;
@@ -61,6 +61,47 @@ body {
     transition: background-color 0.3s;
     align-self: flex-start;
 }
+
+.sosial {
+    display: flex;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.komentar,
+.like-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.komentar {
+    padding-top: 5px;
+}
+
+.komentar i {
+    margin: 5px 0;
+}
+
+.like-button i {
+    margin-top  : 5px;
+    padding-bottom: 10px;
+    justify-items: center;
+}
+
+.komentar:hover,
+.like-button:hover {
+    background-color: #2980b9;
+}
+
 
 .deskripsi-text a:hover {
     background-color: #0056b3;
@@ -80,6 +121,7 @@ main.content {
     flex-direction: column;
     display: flex;
 }
+
 .btn-beli {
     background-color: #007BFF;
     color: white;

@@ -17,15 +17,15 @@ if ($user['role'] == 'banned') {
     exit();
 }
 
-// Ambil ID user dari session
+
 $id_user = $_SESSION['id_user'] ?? 1;
 
-// Ambil ID produk dari URL jika ada (saat form like disubmit)
+
 $id_produk_submitted = isset($_GET['id_produk']) ? (int)$_GET['id_produk'] : null;
 
-// Proses jika tombol like ditekan
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $id_produk_submitted !== null) {
-    // Cek apakah user sudah menyukai produk ini
+ 
     $cek = $conn->query("SELECT * FROM db_suka_produk WHERE id_user = '$id_user' AND id_produk = '$id_produk_submitted'");
 
     if ($cek->num_rows <= 0) {
@@ -62,7 +62,7 @@ if (isset($_SESSION['error'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kerajinan</title>
-    <link rel="stylesheet" href="css1.css">
+    <link rel="stylesheet" href="css/css1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -107,12 +107,15 @@ if (isset($_SESSION['error'])) {
                         <div class="tombol-aksi">
                             <a href="beli.php?id=<?= $row['id_produk'] ?>" class="btn-beli">Beli Sekarang</a>
                             <?php if ($row['id_user'] == $id_user): ?>
-                                <a href="proses.php?hapus=<?= $row['id_produk'] ?>"
-                                    onclick="return confirm('Yakin ingin menghapus produk ini?')"
-                                    class="btn-hapus"
-                                    title="Hapus Produk">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
+                                <a href="kelola.php?edit=<?= $row['id_produk'] ?>" 
+                                       class="btn-hapus" title="Hapus Produk">
+                                       <i class="fas fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="proses.php?hapus=<?= $row['id_produk'] ?>" 
+                                       onclick="return confirm('Yakin ingin menghapus produk ini?')" 
+                                       class="btn-hapus" title="Hapus Produk">
+                                       <i class="fas fa-trash-alt"></i>
+                                    </a>
                             <?php endif; ?>
                         </div>
 

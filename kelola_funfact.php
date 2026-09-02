@@ -106,3 +106,4 @@ $query_funfact = mysqli_query($koneksi, "SELECT * FROM db_funfact ORDER BY creat
     <?php endwhile; ?>
 </body>
 </html>
+

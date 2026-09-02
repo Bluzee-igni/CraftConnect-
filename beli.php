@@ -26,19 +26,38 @@ $harga = intval($produk['harga']);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CraftConnect</title>
-  <link rel="stylesheet" href="beli.css" />
+  <link rel="stylesheet" href="css/beli.css" />
+  <link rel="stylesheet" href="css/css1.css" />
 </head>
+
 <body>
+
+   <nav class="navbar">
+        <a href="#" class="navbar-logo">Craft<span>Connect</span>.</a>
+        <div class="navbar-nav">
+            <a href="Index.php">Home</a>
+            <a href="kerajinan.php">Kerajinan</a>
+            <a href="About.php">Tentang Kami</a>
+            <a href="profil.php">Profil</a>
+            <a href="kelola.php">+</a>
+        </div>
+        <div class="navbar-extra" id="hamburger-menu">
+            <a href="#" id="search"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        </div>
+    </nav>
+
   <div class="container">
     <div class="left">
-      <div class="logo">Craft<span>Connect.</span></div>
       <img src="img/<?= htmlspecialchars($produk['foto_produk']) ?>" alt="Produk" />
       <p><?= htmlspecialchars($produk['penjelasan']) ?></p>
     </div>
     <div class="right">
       <!-- Arahkan ke file proses -->
-      <form action="proses_beli.php" method="POST">
+      <form action="proses/proses_beli.php" method="POST">
         <input type="hidden" name="id_produk" value="<?= $produk['id_produk'] ?>" />
+        <h1 class="Text-Pilih">Silahkan di pilih seberapa banyak produk yang ingin anda beli</h1>
         <div class="options">
           <?php foreach ([1, 5, 10, 15, 20] as $qty): ?>
             <button type="button" class="option-btn" onclick="setQty(<?= $qty ?>)"><?= $qty ?>x</button>
@@ -77,3 +96,4 @@ $harga = intval($produk['harga']);
   </script>
 </body>
 </html>
+

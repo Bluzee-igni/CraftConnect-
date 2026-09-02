@@ -4,7 +4,7 @@ include "koneksi.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="css1.css">
+<link rel="stylesheet" href="css/css1.css">
 
 <head>
     <meta charset="UTF-8">

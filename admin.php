@@ -23,7 +23,7 @@ $result = mysqli_query($koneksi, $query);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CraftConnect - Admin Panel</title>
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="css/admin.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -33,7 +33,8 @@ $result = mysqli_query($koneksi, $query);
       <a href="admin.php" class="nav-link">Data User</a>
       <a href="kelola_pesanan.php" class="nav-link">Data Pesanan</a>
       <a href="kelola_kerajinan.php" class="nav-link">Kerajinan</a>
-      <a href="logout.php" class="logout-btn">Log Out ?</a>
+      <a href="tambah_kerajinan_admin.php" class="nav-link">+</a>
+      <a href="proses/logout.php" class="logout-btn">Log Out ?</a>
     </aside>
 
     <main class="main-content">
@@ -88,3 +89,4 @@ $result = mysqli_query($koneksi, $query);
   </div>
 </body>
 </html>
+

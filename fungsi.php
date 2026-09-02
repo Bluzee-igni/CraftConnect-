@@ -70,3 +70,4 @@ function hapus_data($data)
 
     return true;
 }
+

@@ -40,7 +40,7 @@ if (isset($_GET['ubah']) || isset($_GET['edit'])) {
     </nav>
 
     <div class="container">
-        <form method="POST" action="proses/proses.php" enctype="multipart/form-data">
+        <form method="POST" action="proses/proses_admin.php" enctype="multipart/form-data">
             <input type="hidden" value="<?php echo $id_produk; ?>" name="id_produk">
 
             <div class="mb-3 row">
@@ -99,7 +99,7 @@ if (isset($_GET['ubah']) || isset($_GET['edit'])) {
                             <i class="fa fa-floppy-o" aria-hidden="true"></i> Tambahkan
                         </button>
                     <?php } ?>
-                    <a href="kerajinan.php" type="button" class="btn btn-danger">
+                    <a href="kelola_kerajinan.php" type="button" class="btn btn-danger">
                         <i class="fa fa-reply" aria-hidden="true"></i> Batal
                     </a>
                 </div>

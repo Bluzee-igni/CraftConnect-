@@ -33,7 +33,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM db_produk");
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- My Style -->
-    <link rel="stylesheet" href="css1.css">
+    <link rel="stylesheet" href="css/css1.css">
 </head>
 
 <body>
@@ -71,7 +71,7 @@ $sql = mysqli_query($koneksi, "SELECT * FROM db_produk");
     </script>
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

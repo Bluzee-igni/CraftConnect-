@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}
+
+.pesanan-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.pesanan-card {
+    background: #eee;
+    border-radius: 10px;
+    display: flex;
+    padding: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pesanan-image img {
+    width: 120px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.pesanan-info {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.pesanan-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.status-badge.selesai {
+    background-color: #d0f0c0;
+    color: #2e7d32;
+}
+
+.status-badge.diproses {
+    background-color: #fff9c4;
+    color: #f57c00;
+}
+
+.status-badge.ditolak {
+    background-color: #ffcdd2;
+    color: #c62828;
+}
+
+.btn-status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-status:hover {
+    opacity: 0.9;
+}
+
+.btn-status.sukses {
+    background-color: #4caf50;
+    color: white;
+}
+
+.btn-status.gagal {
+    background-color: #e53935;
+    color: white;
+}
+
+.btn-status.pending {
+    background-color: #ffcc80;
+    color: black;
+    cursor: default;
+}
+
+.Text-pesanan {
+    font-size: 24px;
+    color: #000000;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-style: italic;
+ 
+   
+    display: inline-block;
+    background-color: #ffffff;
+    padding: 12px 30px;        
+    border-radius: 50px;        
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+
+    margin: 20px auto;          
+}

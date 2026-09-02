@@ -31,8 +31,8 @@ $username = $user['username'] ?? 'username';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Profil</title>
-  <link rel="stylesheet" href="profil.css"/>
-  <link rel="stylesheet" href="css1.css"/>
+  <link rel="stylesheet" href="css/profil.css"/>
+  <link rel="stylesheet" href="css/css1.css"/>
 </head>
 <body>
 
@@ -63,9 +63,10 @@ $username = $user['username'] ?? 'username';
       <a href="pesanan.php" class="button order-button">Pesanan 📦 <span class="arrow">→</span></a>
     </div>
 
-    <form action="logout.php" method="post">
+    <form action="proses/logout.php" method="post">
       <button class="logout-button" type="submit">Log Out</button>
     </form>
   </div>
 </body>
 </html>
+

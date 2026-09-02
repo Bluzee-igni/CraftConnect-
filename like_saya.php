@@ -27,8 +27,8 @@ if (!$result) {
 <head>
     <meta charset="UTF-8">
     <title>Like Saya - CraftConnect</title>
-    <link rel="stylesheet" href="css1.css">
-    <link rel="stylesheet" href="like_saya.css">
+    <link rel="stylesheet" href="css/css1.css">
+    <link rel="stylesheet" href="css/like_saya.css">
 </head>
 <body>
 
@@ -93,3 +93,4 @@ if (!$result) {
 
 </body>
 </html>
+

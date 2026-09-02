@@ -21,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_pesanan'], $_POST['
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CraftConnect - Kelola Pesanan</title>
-  <link rel="stylesheet" href="admin.css">
-  <link rel="stylesheet" href="kelola_pesanan.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/kelola_pesanan.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -33,7 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_pesanan'], $_POST['
       <a href="admin.php" class="nav-link">Data User</a>
       <a href="kelola_pesanan.php" class="nav-link active">Data Pesanan</a>
       <a href="kelola_kerajinan.php" class="nav-link">Kerajinan</a>
-      <a href="logout.php" class="logout-btn">Log Out ?</a>
+      <a href="tambah_kerajinan_admin.php" class="nav-link">+</a>
+      <a href="proses/logout.php" class="logout-btn">Log Out ?</a>
     </aside>
 
     <main class="content">
@@ -83,3 +84,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_pesanan'], $_POST['
 </body>
 
 </html>
+

@@ -1,5 +1,5 @@
 <?php
-    include 'fungsi.php';
+    include '../fungsi.php';
     session_start();
 
     if(isset($_POST['aksi'])){
@@ -9,7 +9,7 @@
 
             if ($berhasil) {
                 $_SESSION['eksekusi'] = "berhasil";
-                header("location:kerajinan.php");
+                header("Location: ../kerajinan.php");
             } else {	
                 echo $berhasil;
             }
@@ -19,7 +19,7 @@
             $berhasil = ubah_data($_POST, $_FILES);
             
             if ($berhasil) {
-                header("location:kerajinan.php");
+                header("Location: ../kerajinan.php");
             } else {	
                 echo $berhasil;
             }
@@ -31,9 +31,10 @@
         
         $berhasil = hapus_data($_GET);
         if ($berhasil) {
-            header("location: kerajinan.php");
+            header("Location: ../kerajinan.php");
         } else {	
             echo $berhasil;
         }
     }
 ?>
+
