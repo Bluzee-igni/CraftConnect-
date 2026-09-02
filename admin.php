@@ -28,14 +28,7 @@ $result = mysqli_query($koneksi, $query);
 </head>
 <body>
   <div class="container">
-    <aside class="sidebar">
-      <h2><span class="brand-white">Craft</span><span class="brand-blue">Connect.</span></h2>
-      <a href="admin.php" class="nav-link">Data User</a>
-      <a href="kelola_pesanan.php" class="nav-link">Data Pesanan</a>
-      <a href="kelola_kerajinan.php" class="nav-link">Kerajinan</a>
-      <a href="tambah_kerajinan_admin.php" class="nav-link">+</a>
-      <a href="proses/logout.php" class="logout-btn">Log Out ?</a>
-    </aside>
+    <?php include 'components/sidebar.php'; ?>
 
     <main class="main-content">
       <h1>Hai min 👋, <?php echo htmlspecialchars($admin_name); ?>!</h1>
@@ -89,4 +82,5 @@ $result = mysqli_query($koneksi, $query);
   </div>
 </body>
 </html>
+
 

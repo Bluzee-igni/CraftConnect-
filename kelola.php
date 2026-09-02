@@ -10,6 +10,10 @@ $penjelasan = '';
 $harga = '';
 $foto_produk = '';
 
+$is_admin = isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 'admin';
+$action_url = $is_admin ? "proses/proses_admin.php" : "proses/proses.php";
+$cancel_url = $is_admin ? "kelola_kerajinan.php" : "kerajinan.php";
+
 if (isset($_GET['ubah']) || isset($_GET['edit'])) {
     $id_produk = isset($_GET['ubah']) ? $_GET['ubah'] : $_GET['edit'];
     $query = "SELECT * FROM db_produk WHERE id_produk = '$id_produk';";
@@ -33,14 +37,10 @@ if (isset($_GET['ubah']) || isset($_GET['edit'])) {
     <title>Kelola Produk</title>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light mb-4">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Tambah Data Produk</a>
-        </div>
-    </nav>
+    <?php include 'components/navbar.php'; ?>
 
     <div class="container">
-        <form method="POST" action="proses/proses.php" enctype="multipart/form-data">
+        <form method="POST" action="<?php echo $action_url; ?>" enctype="multipart/form-data">
             <input type="hidden" value="<?php echo $id_produk; ?>" name="id_produk">
 
             <div class="mb-3 row">
@@ -99,7 +99,7 @@ if (isset($_GET['ubah']) || isset($_GET['edit'])) {
                             <i class="fa fa-floppy-o" aria-hidden="true"></i> Tambahkan
                         </button>
                     <?php } ?>
-                    <a href="kerajinan.php" type="button" class="btn btn-danger">
+                    <a href="<?php echo $cancel_url; ?>" type="button" class="btn btn-danger">
                         <i class="fa fa-reply" aria-hidden="true"></i> Batal
                     </a>
                 </div>
@@ -108,4 +108,5 @@ if (isset($_GET['ubah']) || isset($_GET['edit'])) {
     </div>
 </body>
 </html>
+
 

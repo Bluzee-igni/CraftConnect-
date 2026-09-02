@@ -46,14 +46,7 @@ $cek_produk = $conn->query("SELECT * FROM db_produk");
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
-            <h2><span class="brand-white">Craft</span><span class="brand-blue">Connect.</span></h2>
-            <a href="admin.php" class="nav-link">Data User</a>
-            <a href="kelola_pesanan.php" class="nav-link">Data Pesanan</a>
-            <a href="kelola_kerajinan.php" class="nav-link">Kerajinan</a>
-            <a href="tambah_kerajinan_admin.php" class="nav-link">+</a>
-            <a href="proses/logout.php" class="logout-btn">Log Out ?</a>
-        </aside>
+        <?php include 'components/sidebar.php'; ?>
 
         <main class="content">
             <h1>Kerajinan Yang Kami Tampilkan</h1>
@@ -83,11 +76,11 @@ $cek_produk = $conn->query("SELECT * FROM db_produk");
 
                                 <div class="tombol-aksi">
                                     <a href="beli.php?id=<?= $row['id_produk'] ?>" class="btn-beli">Beli Sekarang</a>
-                                    <a href="tambah_kerajinan_admin.php?edit=<?= $row['id_produk'] ?>" 
-                                       class="btn-hapus" title="Hapus Produk">
+                                    <a href="kelola.php?edit=<?= $row['id_produk'] ?>" 
+                                       class="btn-edit" title="Edit Produk">
                                        <i class="fas fa-pen-to-square"></i>
                                     </a>
-                                    <a href="proses_admin.php?hapus=<?= $row['id_produk'] ?>" 
+                                    <a href="proses/proses_admin.php?hapus=<?= $row['id_produk'] ?>" 
                                        onclick="return confirm('Yakin ingin menghapus produk ini?')" 
                                        class="btn-hapus" title="Hapus Produk">
                                        <i class="fas fa-trash-alt"></i>
@@ -113,4 +106,5 @@ $cek_produk = $conn->query("SELECT * FROM db_produk");
     </div>
 </body>
 </html>
+
 

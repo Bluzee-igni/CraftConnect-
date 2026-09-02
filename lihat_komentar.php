@@ -129,14 +129,7 @@ if (isset($_GET['hapus'])) {
 <body>
 
 <div class="container">
-    <aside class="sidebar">
-        <h2><span class="brand-white">Craft</span><span class="brand-blue">Connect.</span></h2>
-        <a href="admin.php" class="nav-link">Data User</a>
-        <a href="kelola_pesanan.php" class="nav-link">Data Pesanan</a>
-        <a href="kelola_kerajinan.php" class="nav-link">Kerajinan</a>
-        <a href="tambah_kerajinan_admin.php" class="nav-link">+</a>
-        <a href="proses/logout.php" class="logout-btn">Log Out ?</a>
-    </aside>
+    <?php include 'components/sidebar.php'; ?>
 
     <main class="content">
         <div class="main-content">
@@ -193,4 +186,5 @@ if (isset($_GET['hapus'])) {
 <?php
 $conn->close();
 ?>
+
 

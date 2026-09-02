@@ -1,60 +1,110 @@
+<?php
+session_start();
+include 'koneksi.php';
+
+$id_pengguna = $_SESSION['id_pengguna'] ?? null;
+
+// Fungsi bantu
+function sudahDisukai($koneksi, $id_funfact, $id_pengguna) {
+    $cek = mysqli_query($koneksi, "SELECT * FROM db_suka_produk WHERE id_produk = '$id_funfact' AND id_pengguna = '$id_pengguna'");
+    return mysqli_num_rows($cek) > 0;
+}
+
+function jumlahLike($koneksi, $id_funfact) {
+    $q = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM db_suka_produk WHERE id_produk = '$id_funfact'");
+    $data = mysqli_fetch_assoc($q);
+    return $data['total'];
+}
+
+function ambilKomentar($koneksi, $id_funfact) {
+    return mysqli_query($koneksi, "d
+        SELECT k.*, p.nama_pengguna 
+        FROM db_komentar k 
+        JOIN db_pengguna p ON k.id_pengguna = p.id_pengguna 
+        WHERE k.id_produk = '$id_funfact' 
+        ORDER BY k.tanggal_komentar DESC
+    ");
+}
+
+// Proses form
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id_funfact = $_POST['id_funfact'];
+
+    if (isset($_POST['like']) && $id_pengguna) {
+        mysqli_query($koneksi, "INSERT INTO db_suka_produk (id_produk, id_pengguna) VALUES ('$id_funfact', '$id_pengguna')");
+    } elseif (isset($_POST['unlike']) && $id_pengguna) {
+        mysqli_query($koneksi, "DELETE FROM db_suka_produk WHERE id_produk = '$id_funfact' AND id_pengguna = '$id_pengguna'");
+    } elseif (isset($_POST['kirim']) && $id_pengguna) {
+        $isi_komentar = mysqli_real_escape_string($koneksi, $_POST['isi_komentar']);
+        mysqli_query($koneksi, "INSERT INTO db_komentar (id_produk, id_pengguna, isi_komentar, tanggal_komentar) VALUES ('$id_funfact', '$id_pengguna', '$isi_komentar', NOW())");
+    }
+
+    header("Location: funfact.php");
+    exit;
+}
+
+// Ambil semua funfact
+$query_funfact = mysqli_query($koneksi, "SELECT * FROM db_funfact ORDER BY created_at DESC");
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KYML</title>
-    <link rel="stylesheet" href="css/funfact.css">
+    <title>Halaman Funfact - CraftConnect</title>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="#" class="navbar-logo">Craft<span>Connect</span>.</a>
-        <div class="navbar-nav">
-            <a href="Index.php">Home</a>
-            <a href="kerajinan.php">Kerajinan</a>
-            <a href="funfact.php">KYML</a>
-            <a href="About.php">Tentang Kami</a>
-            <a href="profil.php">Profil</a>
-            <a href="kelola.php">+</a>
-        </div>
-        <div class="navbar-extra" id="hamburger-menu">
-            <a href="#" id="search"><i data-feather="search"></i></a>
-            <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
-            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-        </div>
-    </nav>
+    <?php include 'components/navbar.php'; ?>
+    <h1 class="judul-halaman">Halaman Funfact</h1>
 
-    <div class="container">
-        <h1>Kerajinan Yang Sudah Mulai <span class="highlight">Langka</span></h1>
+    <?php while ($f = mysqli_fetch_assoc($query_funfact)) : ?>
+        <div class="funfact-card">
+            <h2 class="funfact-judul"><?= htmlspecialchars($f['judul']); ?></h2>
+            <div class="funfact-gambar">
+                <img src="img/<?= htmlspecialchars($f['gambar']); ?>" alt="<?= htmlspecialchars($f['judul']); ?>" class="gambar-funfact" width="300">
+            </div>
+            <p class="funfact-deskripsi"><?= nl2br(htmlspecialchars($f['deskripsi'])); ?></p>
 
-        <div class="card">
-            <img src="img/tikar.jpg" alt="Tikar Mendong">
-            <div class="text">
-                <p>
-                    Kerajinan tikar mendong menjadi langka karena berkurangnya perajin, sulitnya bahan baku, dan menurunnya permintaan akibat hadirnya produk alternatif seperti tikar plastik. 
-                    Namun, tikar ini masih bisa ditemukan di sentra kerajinan seperti Tasikmalaya, Garut, dan Sleman, serta di pasar tradisional yang menjual produk anyaman. 
-                    Selain itu, marketplace seperti Shopee dan Tokopedia juga menawarkan tikar mendong, atau bisa langsung memesan dari perajin melalui media sosial dan komunitas kerajinan tangan.
-                </p>
+            <!-- LIKE -->
+            <div class="aksi-suka">
+                <?php if ($id_pengguna): ?>
+                    <form method="post" class="form-suka">
+                        <input type="hidden" name="id_funfact" value="<?= $f['id_funfact']; ?>">
+                        <?php if (sudahDisukai($koneksi, $f['id_funfact'], $id_pengguna)): ?>
+                            <button type="submit" name="unlike" class="btn-unlike">Batal Suka</button>
+                        <?php else: ?>
+                            <button type="submit" name="like" class="btn-like">Suka</button>
+                        <?php endif; ?>
+                        <span class="jumlah-like"><?= jumlahLike($koneksi, $f['id_funfact']); ?> suka</span>
+                    </form>
+                <?php else: ?>
+                    <p class="pesan-login"><em>Login untuk menyukai funfact ini.</em></p>
+                <?php endif; ?>
+            </div>
+
+            <!-- KOMENTAR -->
+            <div class="komentar-section">
+                <h4 class="judul-komentar">Komentar:</h4>
+                <div class="daftar-komentar">
+                    <?php
+                    $komentar = ambilKomentar($koneksi, $f['id_funfact']);
+                    while ($k = mysqli_fetch_assoc($komentar)) :
+                    ?>
+                        <p class="item-komentar"><strong><?= htmlspecialchars($k['nama_pengguna']); ?>:</strong> <?= htmlspecialchars($k['isi_komentar']); ?></p>
+                    <?php endwhile; ?>
+                </div>
+
+                <?php if ($id_pengguna): ?>
+                    <form method="post" class="form-komentar">
+                        <input type="hidden" name="id_funfact" value="<?= $f['id_funfact']; ?>">
+                        <textarea name="isi_komentar" required placeholder="Tulis komentar..." class="input-komentar" rows="2" cols="40"></textarea><br>
+                        <button type="submit" name="kirim" class="btn-kirim-komentar">Kirim Komentar</button>
+                    </form>
+                <?php else: ?>
+                    <p class="pesan-login"><em>Login untuk memberi komentar.</em></p>
+                <?php endif; ?>
             </div>
         </div>
+    <?php endwhile; ?>
+</body>
+</html>
 
-        <div class="card">
-            <img src="img/ukiranbatuadas.jpeg" alt="Ukiran Batu Padas">
-            <div class="text">
-                <p>
-                    Kerajinan ukir batu padas semakin langka karena berkurangnya perajin, sulitnya bahan baku, serta persaingan dengan material modern seperti beton cetak. 
-                    Generasi muda kurang tertarik meneruskan keahlian ini, sementara regulasi lingkungan memperketat pengambilan batu padas. 
-                    Selain itu, permintaan terbatas karena ukiran batu padas lebih banyak digunakan untuk ornamen candi, pura, atau rumah tradisional. 
-                    Meski demikian, beberapa daerah seperti Gianyar (Bali) dan Muntilan (Magelang) masih memiliki perajin yang mempertahankan seni ini.
-                </p>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
-   
-    <script>
-        feather.replace();
-    </script>
-</body>
-</html>

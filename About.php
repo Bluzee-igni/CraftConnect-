@@ -9,16 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 <body>
-<nav class="navbar">
-    <a href="#" class="navbar-logo">Craft<span>Connect</span>.</a>
-
-    <div class="navbar-nav">
-        <a href="Index.php">Home</a>
-        <a href="kerajinan.php">Kerajinan</a>
-        <a href="About.php">Tentang Kami</a>
-        <a href="profil.php">Profil</a>
-    </div>
-</nav>
+<?php include 'components/navbar.php'; ?>
 
 
 
@@ -38,3 +29,4 @@
 </div>
 </body>
 </html>
+
