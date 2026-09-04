@@ -15,7 +15,7 @@ $action_url = $is_admin ? "proses/proses_admin.php" : "proses/proses.php";
 $cancel_url = $is_admin ? "kelola_kerajinan.php" : "kerajinan.php";
 
 if (isset($_GET['ubah']) || isset($_GET['edit'])) {
-    $id_produk = isset($_GET['ubah']) ? $_GET['ubah'] : $_GET['edit'];
+    $id_produk = isset($_GET['ubah']) ? (int)$_GET['ubah'] : (int)$_GET['edit'];
     $query = "SELECT * FROM db_produk WHERE id_produk = '$id_produk';";
     $sql = mysqli_query($koneksi, $query);
     $result = mysqli_fetch_assoc($sql);

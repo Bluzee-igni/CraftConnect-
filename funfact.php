@@ -17,7 +17,7 @@ function jumlahLike($koneksi, $id_funfact) {
 }
 
 function ambilKomentar($koneksi, $id_funfact) {
-    return mysqli_query($koneksi, "d
+    return mysqli_query($koneksi, "
         SELECT k.*, p.nama_pengguna 
         FROM db_komentar k 
         JOIN db_pengguna p ON k.id_pengguna = p.id_pengguna 
@@ -28,7 +28,7 @@ function ambilKomentar($koneksi, $id_funfact) {
 
 // Proses form
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id_funfact = $_POST['id_funfact'];
+    $id_funfact = (int)$_POST['id_funfact'];
 
     if (isset($_POST['like']) && $id_pengguna) {
         mysqli_query($koneksi, "INSERT INTO db_suka_produk (id_produk, id_pengguna) VALUES ('$id_funfact', '$id_pengguna')");
